@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
-        <title>The Way To You</title>
-        <link rel = "stylesheet" href = "css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
-    </head>
-    <body>
-        <div class = "container">
-            <aside class = "sidebar">
-                <div class = "sidebar-top">
-                    <img src = "img/logo.png" class = "logo" alt = "로고">
-                </div>
-                <div class = "sidebar-mid">
-                    <ul>
-                        <li><a href = "#" onclick = "loadPage('home')">HOME</a></li>
-                        <li><a href = "#" onclick = "loadPage('about')">OURS</a></li>
-                        <li><a href = "#" onclick = "loadPage('contact')">CONTACT</a></li>
-                    </ul>
-                </div>
-                <div class = "sidebar-bot">
-                    <h1>footer</h1>
-                </div>
-            </aside>
-            <main class = "content">
-                <div class= "slide">
-                    <img class = "slide-img" id = "imgA" src = "./img/img01.jpg">
-                    <img class = "slide-img" id = "imgB" src = "">
-                </div>
-            </main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Way To You</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <img src="img/logo.png" class="logo" alt="로고" />
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src = "js/main.js"></script>
-    </body>
+        <div class="sidebar-bottom">
+          <ul class="menu">
+            <li>
+              <a href="#">
+                <span class="label">HOME</span>
+                <span class="line"></span>
+                <img class="arrow" src="img/img04.png" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="label">OURS</span>
+                <span class="line"></span>
+                <img class="arrow" src="img/img04.png" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="label">CONTACT</span>
+                <span class="line"></span>
+                <img class="arrow" src="img/img04.png" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <main class="content">
+        <div class="slide">
+          <img class="slide-img" id="imgA" src="./img/img01.jpg" />
+          <img class="slide-img" id="imgB" src="" />
+        </div>
+      </main>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
