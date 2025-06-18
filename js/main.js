@@ -1,8 +1,4 @@
-const images = [
-  "img/img01.jpg",
-  "img/img02.jpg",
-  "img/img03.jpg"
-];
+const images = ["img/img01.jpg", "img/img02.jpg", "img/img03.jpg"];
 
 let currentIndex = 0;
 let showingA = true;
@@ -38,4 +34,4 @@ function showNextImage() {
   showingA = !showingA;
 }
 
-setInterval(showNextImage, 3000);
+setInterval(showNextImage, 6000);
