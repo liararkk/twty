@@ -1,37 +1,57 @@
-const images = ["img/img01.jpg", "img/img02.jpg", "img/img03.jpg"];
+document.addEventListener("DOMContentLoaded", () => {
+  const images = ["img/img01.jpg", "img/img02.jpg", "img/img03.jpg"];
+  let index = 0;
+  let showingA = true;
+  const intervalTime = 4000;
 
-let currentIndex = 0;
-let showingA = true;
+  const imgA = document.getElementById("main-imgA");
+  const imgB = document.getElementById("main-imgB");
+  const staticMenuItems = document.querySelectorAll(".static-index li");
 
-const imgA = document.getElementById("imgA");
-const imgB = document.getElementById("imgB");
+  imgA.src = images[index];
+  gsap.set(imgA, { opacity: 1, zIndex: 2 });
+  gsap.set(imgB, { opacity: 0, zIndex: 1 });
 
-// 초기 세팅
-imgA.src = images[currentIndex];
+  function switchImage(nextIndex) {
+    const current = showingA ? imgA : imgB;
+    const next = showingA ? imgB : imgA;
 
-function showNextImage() {
-  const current = showingA ? imgA : imgB;
-  const next = showingA ? imgB : imgA;
+    next.src = images[nextIndex];
+    gsap.set(next, { opacity: 0, zIndex: 3 });
 
-  // 다음 이미지 설정
-  const nextIndex = (currentIndex + 1) % images.length;
-  next.src = images[nextIndex];
+    gsap.to(next, {
+      opacity: 1,
+      duration: 1.5,
+      ease: "power2.out",
+    });
 
-  // 초기 위치 오른쪽
-  next.style.transition = "none"; // 트랜지션 잠시 제거
-  next.style.transform = "translateX(100%)";
-  next.style.zIndex = 2;
-  current.style.zIndex = 1;
+    gsap.to(current, {
+      opacity: 0,
+      duration: 1.5,
+      ease: "power2.out",
+      onComplete: () => {
+        gsap.set(current, { zIndex: 1 });
+        gsap.set(next, { zIndex: 2 });
+      },
+    });
 
-  // 강제 리플로우로 위치 반영
-  void next.offsetWidth;
+    index = nextIndex;
+    showingA = !showingA;
+  }
 
-  // 트랜지션 복원 후 애니메이션 시작
-  next.style.transition = "transform 0.8s ease-in-out";
-  next.style.transform = "translateX(0)";
+  // 자동 슬라이드
+  setInterval(() => {
+    const nextIndex = (index + 1) % images.length;
+    switchImage(nextIndex);
+  }, intervalTime);
 
-  currentIndex = nextIndex;
-  showingA = !showingA;
-}
-
-setInterval(showNextImage, 6000);
+  // 번호 클릭 시 강제 이동
+  staticMenuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const targetIndex = parseInt(item.getAttribute("data-index"));
+      if (targetIndex !== index) {
+        switchImage(targetIndex);
+      }
+    });
+  });
+});
